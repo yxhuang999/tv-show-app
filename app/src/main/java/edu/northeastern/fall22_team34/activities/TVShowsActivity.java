@@ -6,7 +6,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +49,7 @@ public class TVShowsActivity extends AppCompatActivity {
                 super.onScrolled(recyclerView, dx, dy);
 
                 if (!activityTvshowsBinding.tvShowRecyclerView.canScrollVertically(1)) {
-                    if (currentPage <= totalAvailablePages) {
+                    if (currentPage < totalAvailablePages) {
                         currentPage += 1;
                         getMostPopularTVShows();
                     }
@@ -55,6 +57,12 @@ public class TVShowsActivity extends AppCompatActivity {
             }
         });
 
+        activityTvshowsBinding.imageSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+            }
+        });
         getMostPopularTVShows();
     }
 

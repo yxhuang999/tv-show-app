@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/background_tv_show.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.31927083333333334" />
         <entry key="app/src/main/res/layout/activity_tvshows.xml" value="0.2595108695652174" />
         <entry key="app/src/main/res/layout/item_container_tv_show.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.222" />
