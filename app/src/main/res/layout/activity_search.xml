@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:background="@color/colorPrimary"
-        tools:context=".activities.SearchActivity">
+        tools:context=".tvshows.activities.SearchActivity">
 
         <LinearLayout
             android:id="@+id/layoutHeader"

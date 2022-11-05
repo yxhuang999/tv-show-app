@@ -1,4 +1,4 @@
-package edu.northeastern.fall22_team34.adapters;
+package edu.northeastern.fall22_team34.tvshows.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -11,8 +11,7 @@ import java.util.List;
 
 import edu.northeastern.fall22_team34.R;
 import edu.northeastern.fall22_team34.databinding.ItemContainerTvShowBinding;
-import edu.northeastern.fall22_team34.models.TVShow;
-import kotlin.jvm.internal.PropertyReference0Impl;
+import edu.northeastern.fall22_team34.tvshows.models.TVShow;
 
 public class TVShowsAdapter extends RecyclerView.Adapter<TVShowsAdapter.TVShowViewHolder> {
 

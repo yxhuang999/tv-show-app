@@ -1,27 +1,27 @@
-package edu.northeastern.fall22_team34.repositories;
+package edu.northeastern.fall22_team34.tvshows.repositories;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import edu.northeastern.fall22_team34.network.ApiClient;
-import edu.northeastern.fall22_team34.network.ApiService;
-import edu.northeastern.fall22_team34.resposes.TVShowsResponse;
+import edu.northeastern.fall22_team34.tvshows.network.ApiClient;
+import edu.northeastern.fall22_team34.tvshows.network.ApiService;
+import edu.northeastern.fall22_team34.tvshows.resposes.TVShowsResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MostPopularTVShowsRepository {
+public class SearchTVShowRepository {
 
     private ApiService apiService;
 
-    public MostPopularTVShowsRepository() {
+    public SearchTVShowRepository() {
         apiService = ApiClient.getRetrofit().create(ApiService.class);
     }
 
-    public LiveData<TVShowsResponse> getMostPopularTVShows(int page) {
+    public LiveData<TVShowsResponse> searchTVShow(String query, int page) {
         MutableLiveData<TVShowsResponse> data = new MutableLiveData<>();
-        apiService.getMostPopularTVShows(page).enqueue(new Callback<TVShowsResponse>() {
+        apiService.searchTVShow(query, page).enqueue(new Callback<TVShowsResponse>() {
             @Override
             public void onResponse(@NonNull Call<TVShowsResponse> call, @NonNull Response<TVShowsResponse> response) {
                 data.setValue(response.body());

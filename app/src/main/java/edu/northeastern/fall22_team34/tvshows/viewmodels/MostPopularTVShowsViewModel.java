@@ -1,10 +1,10 @@
-package edu.northeastern.fall22_team34.viewmodels;
+package edu.northeastern.fall22_team34.tvshows.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import edu.northeastern.fall22_team34.repositories.MostPopularTVShowsRepository;
-import edu.northeastern.fall22_team34.resposes.TVShowsResponse;
+import edu.northeastern.fall22_team34.tvshows.repositories.MostPopularTVShowsRepository;
+import edu.northeastern.fall22_team34.tvshows.resposes.TVShowsResponse;
 
 public class MostPopularTVShowsViewModel extends ViewModel {
 

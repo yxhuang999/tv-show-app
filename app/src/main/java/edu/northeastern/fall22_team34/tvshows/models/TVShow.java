@@ -1,4 +1,4 @@
-package edu.northeastern.fall22_team34.models;
+package edu.northeastern.fall22_team34.tvshows.models;
 
 import com.google.gson.annotations.SerializedName;
 

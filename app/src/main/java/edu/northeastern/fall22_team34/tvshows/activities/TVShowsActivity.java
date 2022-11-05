@@ -1,4 +1,4 @@
-package edu.northeastern.fall22_team34.activities;
+package edu.northeastern.fall22_team34.tvshows.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.fall22_team34.R;
-import edu.northeastern.fall22_team34.adapters.TVShowsAdapter;
+import edu.northeastern.fall22_team34.tvshows.adapters.TVShowsAdapter;
 import edu.northeastern.fall22_team34.databinding.ActivityTvshowsBinding;
-import edu.northeastern.fall22_team34.models.TVShow;
-import edu.northeastern.fall22_team34.viewmodels.MostPopularTVShowsViewModel;
+import edu.northeastern.fall22_team34.tvshows.models.TVShow;
+import edu.northeastern.fall22_team34.tvshows.viewmodels.MostPopularTVShowsViewModel;
 
 public class TVShowsActivity extends AppCompatActivity {
 

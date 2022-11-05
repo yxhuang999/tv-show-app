@@ -6,7 +6,7 @@
         
         <variable
             name="tvShow"
-            type="edu.northeastern.fall22_team34.models.TVShow" />
+            type="edu.northeastern.fall22_team34.tvshows.models.TVShow" />
 
     </data>
 

@@ -1,10 +1,10 @@
-package edu.northeastern.fall22_team34.resposes;
+package edu.northeastern.fall22_team34.tvshows.resposes;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import edu.northeastern.fall22_team34.models.TVShow;
+import edu.northeastern.fall22_team34.tvshows.models.TVShow;
 
 public class TVShowsResponse {
 

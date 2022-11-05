@@ -1,4 +1,4 @@
-package edu.northeastern.fall22_team34.activities;
+package edu.northeastern.fall22_team34.tvshows.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +19,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import edu.northeastern.fall22_team34.R;
-import edu.northeastern.fall22_team34.adapters.TVShowsAdapter;
+import edu.northeastern.fall22_team34.tvshows.adapters.TVShowsAdapter;
 import edu.northeastern.fall22_team34.databinding.ActivitySearchBinding;
-import edu.northeastern.fall22_team34.models.TVShow;
-import edu.northeastern.fall22_team34.viewmodels.SearchViewModel;
+import edu.northeastern.fall22_team34.tvshows.models.TVShow;
+import edu.northeastern.fall22_team34.tvshows.viewmodels.SearchViewModel;
 
 public class SearchActivity extends AppCompatActivity {
 

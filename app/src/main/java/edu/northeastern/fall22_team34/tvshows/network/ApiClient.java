@@ -1,4 +1,4 @@
-package edu.northeastern.fall22_team34.network;
+package edu.northeastern.fall22_team34.tvshows.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

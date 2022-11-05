@@ -1,4 +1,4 @@
-package edu.northeastern.fall22_team34.utilities;
+package edu.northeastern.fall22_team34.tvshows.utilities;
 
 import android.widget.ImageView;
 
