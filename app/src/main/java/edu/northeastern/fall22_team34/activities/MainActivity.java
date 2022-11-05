@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import edu.northeastern.fall22_team34.R;
 import edu.northeastern.fall22_team34.viewmodels.MostPopularTVShowsViewModel;
 

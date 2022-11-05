@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "713005204241",
+    "project_id": "share-sticker",
+    "storage_bucket": "share-sticker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713005204241:android:12037e7d780c335223c2b0",
+        "android_client_info": {
+          "package_name": "edu.northeastern.fall22_team34"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713005204241-hl8jbnaggjgcnstm6r5rgdo16kghl6pk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnd0nTPA7mAUtqBtsHkM5MlP6q4EM1Jf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713005204241-hl8jbnaggjgcnstm6r5rgdo16kghl6pk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
