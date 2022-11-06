@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-
     id 'com.google.gms.google-services'
 }
 
@@ -69,7 +68,10 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:31.0.2')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.google.firebase:firebase-inappmessaging:20.2.0'
     implementation 'com.google.firebase:firebase-database:20.1.0'
-
+    implementation 'com.google.firebase:firebase-messaging:23.1.0'
 }

@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        
+
         <variable
             name="isLoading"
             type="Boolean" />
-        
+
         <variable
             name="isLoadingMore"
             type="Boolean" />
-        
+
         <import type="android.view.View" />
-        
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,7 +40,7 @@
                 android:layout_height="@dimen/_24sdp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_back"
-                app:tint="@color/colorTextIcons"/>
+                app:tint="@color/colorTextIcons" />
 
             <EditText
                 android:id="@+id/inputSearch"
@@ -52,11 +52,11 @@
                 android:background="@null"
                 android:hint="Search TV Shows"
                 android:imeOptions="actionDone"
-                android:textColorHint="@color/colorTextSecondary"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="@dimen/_13ssp"/>
+                android:textColorHint="@color/colorTextSecondary"
+                android:textSize="@dimen/_13ssp" />
 
             <ImageView
                 android:id="@+id/imageSearch"
@@ -73,15 +73,15 @@
             android:id="@+id/tvShowRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_45sdp"
             android:clipToPadding="false"
             android:orientation="vertical"
             android:paddingStart="@dimen/_4sdp"
             android:paddingTop="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_45sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutHeader"/>
+            app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
 
         <ProgressBar
             android:layout_width="@dimen/_25sdp"
@@ -90,7 +90,7 @@
             android:visibility="@{isLoading ? View.VISIBLE : View.GONE, default=gone}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutHeader"/>
+            app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
 
         <ProgressBar
             android:layout_width="@dimen/_25sdp"
@@ -99,7 +99,7 @@
             android:visibility="@{isLoadingMore ? View.VISIBLE : View.GONE, default=gone}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
