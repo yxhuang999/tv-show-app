@@ -43,6 +43,7 @@ import edu.northeastern.fall22_team34.R;
 import edu.northeastern.fall22_team34.sticker.models.User;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 public class SendStickerActivity extends AppCompatActivity {
 
@@ -67,10 +68,10 @@ public class SendStickerActivity extends AppCompatActivity {
 
     private List<Uri> imgReceived = new ArrayList<>();
 
-    private int countSent;
     private List<String> senders;
     private List<Date> timeReceived;
     private List<String> StickersReceived;
+    private Map<String, Integer> imgSent;
 
     boolean indicator = false;
 
@@ -99,7 +100,7 @@ public class SendStickerActivity extends AppCompatActivity {
             senders  = new ArrayList<>();
             timeReceived  = new ArrayList<>();
             StickersReceived  = new ArrayList<>();
-            countSent = 0;
+            imgSent = new HashMap<>();
         }
 
         mDatabase.getReference().child("users").addChildEventListener(new ChildEventListener() {
@@ -165,7 +166,6 @@ public class SendStickerActivity extends AppCompatActivity {
                 if(imageUri == null) {
                     toastDisplay("Please choose a sticker before sending.");
                 } else {
-                    countSent += 1;
                     Date currentTime = Calendar.getInstance().getTime();
                     senders.add(username);
                     timeReceived.add(currentTime);
@@ -173,7 +173,6 @@ public class SendStickerActivity extends AppCompatActivity {
                     sendImage(recipientUsername, username, imageUri);
                     toastDisplay("Successfully sent!");
                     indicator = true;
-
                 }
             }
         });
@@ -205,62 +204,25 @@ public class SendStickerActivity extends AppCompatActivity {
             });
 
 
-//    public String imageExtension(Uri uriImage) {
-//        ContentResolver c = getContentResolver();
-//        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//        return mime.getExtensionFromMimeType(c.getType(uriImage));
-//    }
 
-    //String recipientUsername,
     public void sendImage(String recipientUsername, String username, Uri selectedImgView) {
-        //countSent += 1;
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-//        HashMap<String, Object> map = new HashMap<>();
-//        map.put("Sender", username);
-//        map.put("Sticker", selectedImgView.toString());
-//        senders.add(username);
-//        timeReceived.add(currentTime);
-//        StickersReceived.add(selectedImgView.toString());
-
-
         recipientUsername = recipientText.getText().toString();
-        Log.i("username", recipientUsername);
-        Log.i("senders", String.valueOf(senders));
+//        Log.i("username", recipientUsername);
+//        Log.i("senders", String.valueOf(senders));
+        String img = imageUri.toString().replaceAll("[^a-zA-Z0-9]", "");
+        if (imgSent.isEmpty()) {
+            imgSent.put(img, 1);
+        } else if (!imgSent.containsKey(img)) {
+            imgSent.put(img, 1);
+        } else {
+            imgSent.put(img, imgSent.get(img) + 1);
+        }
         reference.child("users").child(recipientUsername).child("Senders").push().setValue(senders); // generate a unique key
         reference.child("users").child(recipientUsername).child("timeReceived").push().setValue(timeReceived);
         reference.child("users").child(recipientUsername).child("stickersReceived").push().setValue(StickersReceived);
-
-
-
-
-        //reference.child("users").child(username).child("Image sent").setValue(countSent);
-        //reference.child("users").child(recipientUsername).child("Sender").setValue(username);
-        //reference.child("users").child(recipientUsername).child("Sticker").setValue(selectedImgView.toString());
+        reference.child("users").child(username).child("imgSent").setValue(imgSent); // imgSent - map
+        //reference.child("users").child(username).child("imgSentValue").setValue(imgSent.values());
     }
 
-
-//        StorageReference reference = mStorageRef.child("Image/" + System.currentTimeMillis() + "." + imageExtension(imageUri));
-//
-//        reference.putFile(imageUri)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        Toast.makeText(SendStickerActivity.this, "Successfully sent!", Toast.LENGTH_LONG).show();
-//                        // create new upload item
-//                        User user = new User(username, REGISTRATION_TOKEN, recipientText.getText().toStirng().trim(),
-//                                taskSnapshot.getUploadSessionUri().toString());
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(SendStickerActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-//
-//                    }
-//                });
 }

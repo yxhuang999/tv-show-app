@@ -20,7 +20,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import edu.northeastern.fall22_team34.R;
 import edu.northeastern.fall22_team34.sticker.models.User;
