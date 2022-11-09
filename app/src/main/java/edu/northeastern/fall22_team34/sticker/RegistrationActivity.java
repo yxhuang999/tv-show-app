@@ -20,6 +20,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import edu.northeastern.fall22_team34.R;
 import edu.northeastern.fall22_team34.sticker.models.User;
@@ -106,7 +107,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void createUser(String username, String token) {
-        User user = new User(username, token);
+        User user = new User(username, token); //  changed parameter
         mDatabase.getReference().child("users").child(username).setValue(user);
     }
 }
