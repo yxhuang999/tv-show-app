@@ -26,7 +26,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.fall22_team34.R;
+import edu.northeastern.fall22_team34.sticker.models.Information;
 import edu.northeastern.fall22_team34.sticker.models.User;
 import java.util.Calendar;
 import java.util.Date;
@@ -54,7 +57,7 @@ public class SendStickerActivity extends AppCompatActivity {
     private StorageReference mStorageRef;
     private StorageTask imageTask;
 
-    private User user;
+    private Information user;
     private String username;
     private List<String> validUsernames;
 
@@ -104,7 +107,7 @@ public class SendStickerActivity extends AppCompatActivity {
             timeReceived  = new ArrayList<>();
             StickersReceived  = new ArrayList<>();
             imgSent = new ArrayList<>();
-            user = new User();
+            user = new Information();
       //  }
 
         // listener what message chatFragment. listens for a chat being sent. if received - onChildChanged. activate
@@ -249,43 +252,58 @@ public class SendStickerActivity extends AppCompatActivity {
     public void uploadFile() {
         if (imageUri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getImageExtension(imageUri));
+            DatabaseReference listReference = FirebaseDatabase.getInstance().getReference().child("users").child(recipientUsername).child("Senders");
+            DatabaseReference listReference1 = FirebaseDatabase.getInstance().getReference().child("users").child(recipientUsername).child("stickersReceived");
+            DatabaseReference listReference2 = FirebaseDatabase.getInstance().getReference().child("users").child(recipientUsername).child("timeReceived");
+            DatabaseReference listReference3 = FirebaseDatabase.getInstance().getReference().child("users").child(username).child("imgSent");
 
             fileReference.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            toastDisplay("Successfully sent!");
+                            //toastDisplay("Successfully sent!");
                             StickersReceived.add(taskSnapshot.getUploadSessionUri().toString());
-                            Log.i("stickers received list", String.valueOf(StickersReceived));
-                            //user.setImgReceived(StickersReceived);
-//                            user.setImgReceived(StickersReceived);
                             Date currentTime = Calendar.getInstance().getTime();
                             timeReceived.add(currentTime.toString());
-                           // user.setTimeReceived(timeReceived);
-//                            user.setTimeReceived(timeReceived);
                             senders.add(username);
-                            //user.setSenderReceived(senders);
-//                            user.setSenderReceived(senders);
-//                            if (!imgSent.containsKey(taskSnapshot.getUploadSessionUri().toString())) {
-//                                imgSent.put(taskSnapshot.getUploadSessionUri().toString(), Integer.valueOf("1"));
-//                            } else {
-//                                imgSent.put(taskSnapshot.getUploadSessionUri().toString(), imgSent.get(taskSnapshot.getUploadSessionUri().toString()) + 1);
-//                            }
-//
                             imgSent.add(taskSnapshot.getUploadSessionUri().toString());
-                            //user.setImgSent(imgSent);
-                            // , timeReceived, senders, imgSent
-                            //User newUser = new User(username, user.getToken(), StickersReceived);
-//                            Intent intent = new Intent(getApplicationContext(), ImageAdapter.class);
-//                            intent.putExtra("senders list", (Serializable) senders); // ssecond parameter is list so need to serialize
-//                            intent.putExtra("received stickers list", (Serializable) StickersReceived);
-//                            intent.putExtra("time list", (Serializable) timeReceived);
-//                            startActivity(intent);
 
-                            mDatabaseRef.child("users").child(recipientUsername).child("Senders").push().setValue(senders);
-                            mDatabaseRef.child("users").child(recipientUsername).child("stickersReceived").push().setValue(StickersReceived);
-                            mDatabaseRef.child("users").child(recipientUsername).child("timeReceived").push().setValue(timeReceived);
-                            mDatabaseRef.child("users").child(username).child("imgSent").push().setValue(imgSent);
+                            user.setImgSent(imgSent);
+                            user.setSenderReceived(senders);
+                            user.setTimeReceived(timeReceived);
+                            user.setImgReceived(StickersReceived);
+
+                            listReference.setValue(senders)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            toastDisplay("Successfully sent!");
+                                        }
+                                    });
+
+                            listReference1.setValue(timeReceived)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            toastDisplay("Successfully sent!");
+                                        }
+                                    });
+
+                            listReference2.setValue(StickersReceived)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            toastDisplay("Successfully sent!");
+                                        }
+                                    });
+
+                            listReference3.setValue(imgSent)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            toastDisplay("Successfully sent!");
+                                        }
+                                    });
 
 
 //                            user.setImgReceived(StickersReceived);

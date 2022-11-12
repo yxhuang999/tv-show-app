@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.IDNA;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +20,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.fall22_team34.R;
+import edu.northeastern.fall22_team34.sticker.models.Information;
 import edu.northeastern.fall22_team34.sticker.models.User;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
     private Context mContext;
-    private List<User> muser;
+    private List<Information> muser;
 
-    public ImageAdapter(Context context, List<User> imageReceived) {
+    public ImageAdapter(Context context, List<Information> imageReceived) {
         mContext = context;
         muser = imageReceived;
         muser = new ArrayList<>();
@@ -43,24 +45,20 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         // get image out of uploaded items into cardview
-        User currentUserInfo = muser.get(position);
+        Information currentUserInfo = muser.get(position);
         // set text view - our view holder
-//        Intent received = ((Activity)mContext).getIntent();
-//        String getSenders = received.getStringExtra("senders list");
-//        String getImages = received.getStringExtra("RECEIVED");
-//        String getTimes = received.getStringExtra("time list");
 
-//        holder.textViewName.setText("Senders: " + currentUserInfo.getSenderReceived() + "/n"
-//                + "Time received: " + currentUserInfo.getTimeReceived());
-
-
-        // get image to imageView, use picasso because loads image from url easy
-
-//        Picasso.get()
-//                .load(String.valueOf(currentUserInfo.getImgReceived()))
-//                .fit()
-//                .centerCrop()
-//                .into(holder.imageView);
+        holder.textViewName.setText("Senders: " + currentUserInfo.getSenderReceived() + "/n"
+                + "Time received: " + currentUserInfo.getTimeReceived());
+//
+//
+//        // get image to imageView, use picasso because loads image from url easy
+//
+        Picasso.get()
+                .load(String.valueOf(currentUserInfo.getImgReceived()))
+                .fit()
+                .centerCrop()
+                .into(holder.imageView);
     }
 
     @Override
