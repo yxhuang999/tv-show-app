@@ -1,18 +1,17 @@
 package edu.northeastern.fall22_team34.sticker.models;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class User {
 
     public String username;
     public String REGISTRATION_TOKEN;
-    public Map<String, Integer> imgSent;
-    public List<String> imgReceived;
-    public List<String> timeReceived;
-    public List<String> senderReceived;
+//    public List<String> imgSent;
+//    public List<String> imgReceived;
+//    public List<String> timeReceived;
+//    public List<String> senderReceived;
 
     public User() {
 
@@ -21,42 +20,64 @@ public class User {
     public User(String username, String REGISTRATION_TOKEN) {
         this.username = username;
         this.REGISTRATION_TOKEN = REGISTRATION_TOKEN;
-        this.imgReceived = new ArrayList<>();
-        this.timeReceived = new ArrayList<>();
-        this.senderReceived = new ArrayList<>();
-        this.imgSent = new HashMap<>();
+//        this.imgReceived = new ArrayList<>();
+//        this.timeReceived = new ArrayList<>();
+//        this.senderReceived = new ArrayList<>();
+//        this.imgSent = new ArrayList<>();
+    }
+//, List<Date> timeReceived, List<String> senderReceived, Map<String, Integer> imgSent
+//    public User(String username, String REGISTRATION_TOKEN, List<String> imgReceived) {
+//        this.username = username;
+//        this.REGISTRATION_TOKEN = REGISTRATION_TOKEN;
+//        this.imgReceived = new ArrayList<>();
+//        this.timeReceived = new ArrayList<>();
+//        this.senderReceived = new ArrayList<>();
+//        this.imgSent = new HashMap<>();
+//    }
+
+    public String getUsername() {
+        return username;
     }
 
-//    public User(String username, String REGISTRATION_TOKEN, int imgSent, List<String> imgReceived) {
-//        this.username = username;
-//        this.REGISTRATION_TOKEN = REGISTRATION_TOKEN;
-//        this.imgReceived = new ArrayList<>();
+//    public String getToken() {
+//        return REGISTRATION_TOKEN;
 //    }
-}
+//
+
 
 //
-//package edu.northeastern.fall22_team34.sticker.models;
-//
-//        import java.util.ArrayList;
-//        import java.util.HashMap;
-//        import java.util.List;
-//        import java.util.Map;
-//
-//public class User {
-//
-//    public String username;
-//    public String REGISTRATION_TOKEN;
-//    public Map<String, Integer> imgSent;
-//    public List<String> imgReceived;
-//
-//    public User() {
-//
+//    public List<String> getImgSent() {
+//        return imgSent;
 //    }
 //
-//    public User(String username, String REGISTRATION_TOKEN) {
-//        this.username = username;
-//        this.REGISTRATION_TOKEN = REGISTRATION_TOKEN;
-//        this.imgSent = new HashMap<>();
-//        this.imgReceived = new ArrayList<>();
+//    public List<String> getImgReceived() {
+//        return imgReceived;
 //    }
-//}
+//
+//    public List<String> getTimeReceived() {
+//        return timeReceived;
+//    }
+//
+//    public List<String> getSenderReceived() {
+//        return senderReceived;
+//    }
+//
+//
+//    public void setImgSent(List<String> imageSent) {
+//        imgSent = imageSent;
+//    }
+//
+//    public void setImgReceived(List<String> imgReceived2) {
+//        imgReceived = imgReceived2;
+//    }
+//
+//    public void setTimeReceived(List<String> timeReceived2) {
+//        timeReceived = timeReceived2;
+//    }
+//
+//    public void setSenderReceived(List<String> senderReceived2) {
+//        senderReceived = senderReceived2;
+//    }
+
+
+}

@@ -20,6 +20,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import edu.northeastern.fall22_team34.R;
 import edu.northeastern.fall22_team34.sticker.models.User;
@@ -56,12 +57,15 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 User user = snapshot.getValue(User.class);
-                validUsernames.add(user.username);
+                validUsernames.add(user.getUsername());
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+//                for(DataSnapshot ds: snapshot.getChildren()) {
+//                    User user = ds.getValue(User.class);
+//                    validUsernames.add(user.username);
+//                }
             }
 
             @Override
@@ -80,7 +84,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
             }
         });
-
         Intent sendStickerActivity = new Intent(getApplicationContext(), SendStickerActivity.class);
         sendStickerActivity.putExtra("REGISTRATION_TOKEN", REGISTRATION_TOKEN);
 
